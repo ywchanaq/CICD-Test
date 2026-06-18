@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Is It Friday Yet?</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-white flex items-center justify-center min-h-screen font-sans">
+
+    <div class="text-center p-8 bg-slate-800 rounded-2xl shadow-2xl border border-slate-700 max-w-md w-full mx-4">
+        <h1 class="text-2xl text-slate-400 font-medium mb-4">Is it Friday yet?</h1>
+        <div id="answer" class="text-6xl font-extrabold tracking-tight mb-6">
+            <!-- JavaScript will populate this -->
+        </div>
+        <p id="message" class="text-lg text-slate-300"></p>
+    </div>
+
+    <script>
+        const today = new Date();
+        const isFriday = today.getDay() === 5; // 5 represents Friday
+        
+        const answerEl = document.getElementById('answer');
+        const messageEl = document.getElementById('message');
+
+        if (isFriday) {
+            answerEl.innerHTML = '<span class="text-emerald-400">YES!</span>';
+            messageEl.innerText = "TGIF! Have a fantastic weekend!";
+        } else {
+            answerEl.innerHTML = '<span class="text-rose-400">NO.</span>';
+            const daysLeft = (5 - today.getDay() + 7) % 7;
+            messageEl.innerText = `Keep pushing! Only ${daysLeft} ${daysLeft === 1 ? 'day' : 'days'} left until Friday.`;
+        }
+    </script>
+</body>
+</html>
